@@ -1,4 +1,1 @@
-public enum BoostType
-{
-    Scale, Speed, ShootPower
-}
+public enum BoostType { Scale, Speed, ShootPower, Random }

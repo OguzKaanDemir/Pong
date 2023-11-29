@@ -1,6 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using static ScoreController;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,7 +15,19 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public UnityAction onGameStart;
+    public UnityAction onScore;
+    public UnityAction onNewRound;
+    public UnityAction onGameFinish;
+
+    [SerializeField] private BallMovement m_Ball;
+
     [SerializeField] private Vector2 m_ArenaLimit;
     public Vector2 GetArenaLimit => m_ArenaLimit;
+
+    private void Start()
+    {
+        onGameStart?.Invoke();
+    }
 
 }

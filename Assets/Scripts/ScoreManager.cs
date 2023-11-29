@@ -1,0 +1,49 @@
+using TMPro;
+using UnityEngine;
+
+public class ScoreManager : MonoBehaviour
+{
+    private static ScoreManager _ins;
+    public static ScoreManager Ins
+    {
+        get
+        {
+            if (!_ins)
+                _ins = FindObjectOfType<ScoreManager>();
+            return _ins;
+        }
+    }
+
+    [SerializeField] private TMP_Text m_Player1ScoreText;
+    [SerializeField] private TMP_Text m_Player2ScoreText;
+
+    private int m_Player1Score;
+    private int m_Player2Score;
+
+    public void OnScore(PlayerType player)
+    {
+        SetScore(player);
+        GameManager.Ins.onScore?.Invoke();
+    }
+
+    private void SetScore(PlayerType player)
+    {
+        switch (player)
+        {
+            case PlayerType.Player1:
+                m_Player1Score++;
+                SetText(m_Player1ScoreText, m_Player1Score);
+                break;
+
+            case PlayerType.Player2:
+                m_Player2Score++;
+                SetText(m_Player2ScoreText, m_Player2Score);
+                break;
+        }
+    }
+
+    private void SetText(TMP_Text text, int score)
+    {
+        text.text = score.ToString();
+    }
+}

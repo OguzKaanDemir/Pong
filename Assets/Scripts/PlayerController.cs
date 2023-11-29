@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
         set => m_CanMove = value;
     }
 
+    public int ballXDirection;
     [SerializeField] private KeyCode m_UpMovementKey;
     [SerializeField] private KeyCode m_DownMovementKey;
     [SerializeField] private float m_Speed;
@@ -25,9 +26,9 @@ public class PlayerController : MonoBehaviour
         get => Input.GetKey(m_DownMovementKey);
     }
 
-    private void Start()
+    private void Awake()
     {
-        Init();
+        GameManager.Ins.onGameStart += Init;
     }
 
     private void Update()
