@@ -16,11 +16,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private KeyCode m_DownMovementKey;
     [SerializeField] private float m_Speed;
 
+    private float m_StartScale;
     private bool m_IsUpPressed
     {
         get => Input.GetKey(m_UpMovementKey);
     }
-
     private bool m_IsDownPressed
     {
         get => Input.GetKey(m_DownMovementKey);
@@ -28,7 +28,11 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        GameManager.Ins.onGameStart += Init;
+        GameManager.Ins.onGameStart += ResetPlayer;
+        GameManager.Ins.onNewRound += ResetPlayer;
+        GameManager.Ins.onGameFinish += StopPlayer;
+
+        m_StartScale = this.transform.localScale.y;
     }
 
     private void Update()
@@ -37,7 +41,7 @@ public class PlayerController : MonoBehaviour
         HandleMovement();
     }
 
-    public void Init()
+    public void ResetPlayer()
     {
         CanMove = true;
     }
@@ -59,7 +63,16 @@ public class PlayerController : MonoBehaviour
             newPos.y -= m_Speed * Time.deltaTime;
 
         var limit = GameManager.Ins.GetArenaLimit;
+        var currentScale = this.transform.localScale.y;
+        var roundedNumber = System.Math.Round((double)(currentScale - m_StartScale), 2) * 10;
+        limit.x += (float)roundedNumber * 0.05f;
+        limit.y -= (float)roundedNumber * 0.05f;
         newPos.y = Mathf.Clamp(newPos.y, limit.x, limit.y);
         this.transform.position = newPos;
+    }
+
+    private void StopPlayer()
+    {
+        CanMove = false;
     }
 }

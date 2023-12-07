@@ -14,6 +14,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    [SerializeField] private int m_MaxScore;
     [SerializeField] private TMP_Text m_Player1ScoreText;
     [SerializeField] private TMP_Text m_Player2ScoreText;
 
@@ -24,6 +25,7 @@ public class ScoreManager : MonoBehaviour
     {
         SetScore(player);
         GameManager.Ins.onScore?.Invoke();
+        Invoke(nameof(OnNewRound), 1.5f);
     }
 
     private void SetScore(PlayerType player)
@@ -40,10 +42,19 @@ public class ScoreManager : MonoBehaviour
                 SetText(m_Player2ScoreText, m_Player2Score);
                 break;
         }
+        if(m_Player1Score >= m_MaxScore)
+        {
+            GameManager.Ins.onGameFinish?.Invoke();
+        }
     }
 
     private void SetText(TMP_Text text, int score)
     {
         text.text = score.ToString();
+    }
+
+    private void OnNewRound()
+    {
+        GameManager.Ins.onNewRound?.Invoke();
     }
 }

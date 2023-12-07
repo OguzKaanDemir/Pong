@@ -1,6 +1,5 @@
 using UnityEngine;
 using UnityEngine.Events;
-using static ScoreController;
 
 public class GameManager : MonoBehaviour
 {
