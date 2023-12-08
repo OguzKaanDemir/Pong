@@ -20,13 +20,18 @@ public class GameManager : MonoBehaviour
     public UnityAction onGameFinish;
 
     [SerializeField] private BallMovement m_Ball;
+    [SerializeField] private GameObject m_PanelsPArent;
 
     [SerializeField] private Vector2 m_ArenaLimit;
     public Vector2 GetArenaLimit => m_ArenaLimit;
 
     private void Start()
     {
+        onGameFinish += OpenPanelsParent;
         onGameStart?.Invoke();
     }
+
+    private void OpenPanelsParent()
+        => m_PanelsPArent.SetActive(true);
 
 }

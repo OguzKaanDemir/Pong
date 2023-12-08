@@ -1,18 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Boost : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public float duration;
+    public PlayerController Player
+    {
+        get
+        {
+            if (!Player)
+                Player = FindObjectOfType<PlayerController>();
+            return Player;
+        }
+        private set { }
+    }
+
+    /*private void Start()
+        => Destroy(this.gameObject, 5);*/
+
+    public virtual void OnTriggerEnter2D(Collider2D collision)
     {
         
     }
 
-    // Update is called once per frame
-    void Update()
+    public virtual void DoAction(BallMovement ball)
     {
-        
+        Destroy(gameObject, .1f);
     }
+
+    private void OnDestroy()
+       => FindObjectOfType<BoostSpawner>().StartSpawn();
 }

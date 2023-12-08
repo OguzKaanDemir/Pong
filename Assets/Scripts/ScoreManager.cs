@@ -14,6 +14,9 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public (int player1Score, int player2Score) GetScores
+        => (m_Player1Score, m_Player2Score);
+
     [SerializeField] private int m_MaxScore;
     [SerializeField] private TMP_Text m_Player1ScoreText;
     [SerializeField] private TMP_Text m_Player2ScoreText;
@@ -25,9 +28,8 @@ public class ScoreManager : MonoBehaviour
     {
         SetScore(player);
         GameManager.Ins.onScore?.Invoke();
-        Invoke(nameof(OnNewRound), 1.5f);
     }
-
+    
     private void SetScore(PlayerType player)
     {
         switch (player)
@@ -42,10 +44,11 @@ public class ScoreManager : MonoBehaviour
                 SetText(m_Player2ScoreText, m_Player2Score);
                 break;
         }
-        if(m_Player1Score >= m_MaxScore)
-        {
+
+        if(m_Player1Score >= m_MaxScore || m_Player2Score >= m_MaxScore)
             GameManager.Ins.onGameFinish?.Invoke();
-        }
+        else
+            Invoke(nameof(OnNewRound), 1.5f);
     }
 
     private void SetText(TMP_Text text, int score)

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float m_Speed;
 
     private float m_StartScale;
+    private float m_StartSpeed;
     private bool m_IsUpPressed
     {
         get => Input.GetKey(m_UpMovementKey);
@@ -33,6 +35,7 @@ public class PlayerController : MonoBehaviour
         GameManager.Ins.onGameFinish += StopPlayer;
 
         m_StartScale = this.transform.localScale.y;
+        m_StartSpeed = m_Speed;
     }
 
     private void Update()
@@ -44,6 +47,34 @@ public class PlayerController : MonoBehaviour
     public void ResetPlayer()
     {
         CanMove = true;
+    }
+
+    public void SetSpeed(float newSpeed, float duration)
+    {
+        StartCoroutine(SpeedCoroutine(newSpeed, duration));
+    }
+
+    private IEnumerator SpeedCoroutine(float newSpeed, float duration)
+    {
+        DOTween.To(()=>m_StartScale, x => m_StartScale = x, newSpeed, .2f);
+
+        yield return new WaitForSeconds(duration);
+
+        DOTween.To(() => m_StartScale, x => m_StartScale = x, m_StartSpeed, .2f);
+    }
+
+    public void SetScale(float newScale, float duration)
+    {
+        StartCoroutine(ScaleCoroutine(newScale, duration));
+    }
+
+    private IEnumerator ScaleCoroutine(float newScale, float duration)
+    {
+        this.transform.DOScaleY(newScale, .2f);
+
+        yield return new WaitForSeconds(duration);
+
+        this.transform.DOScaleY(m_StartScale, .2f);
     }
 
     private void HandleMovement()

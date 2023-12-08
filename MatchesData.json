@@ -1,0 +1,14 @@
+{
+    "matches": [
+        {
+            "Player1": {
+                "Name": "asda",
+                "Score": 0
+            },
+            "Player2": {
+                "Name": "ddsa",
+                "Score": 1
+            }
+        }
+    ]
+}

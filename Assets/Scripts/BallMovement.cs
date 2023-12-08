@@ -9,6 +9,8 @@ public class BallMovement : MonoBehaviour
     [SerializeField] private float m_MaxExtraSpeed;
     [SerializeField] private float m_StartDelay;
 
+    private PlayerController m_LastPlayer;
+
     private int m_HitCounter;
     private Rigidbody2D m_Rb;
     private Vector3 m_StartPosition;
@@ -34,6 +36,7 @@ public class BallMovement : MonoBehaviour
             localContactY += r == 1 ? 0.05f : -0.05f;
 
             Move(new Vector2(p.ballXDirection, localContactY * 2));
+            m_LastPlayer = p;
             m_HitCounter++;
         }
     }
@@ -46,9 +49,10 @@ public class BallMovement : MonoBehaviour
     }
 
     public void ResetBall()
-    {
-        StartCoroutine(ResetCoroutine());
-    }
+        => StartCoroutine(ResetCoroutine());
+
+    public PlayerController GetLastPlayer()
+        => m_LastPlayer;
 
     private IEnumerator ResetCoroutine()
     {
