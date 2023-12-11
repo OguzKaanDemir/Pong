@@ -7,7 +7,7 @@ public class BoostSpawner : MonoBehaviour
     [SerializeField] private Vector2 m_PositiveBoostArenaLimit;
     [SerializeField] private float m_SpawnDuration;
 
-    private void Start()
+    private void Awake()
     {
         GameManager.Ins.onGameStart += StartSpawn;
         GameManager.Ins.onScore += StopSpawn;
@@ -26,7 +26,7 @@ public class BoostSpawner : MonoBehaviour
 
     private void Spawn()
     {
-        var rIndex = Random.Range(0, m_BoostPrefabs.Capacity);
+        var rIndex = Random.Range(0, m_BoostPrefabs.Count);
 
         var rPos = Vector3.zero;
         rPos.x = Random.Range(-m_PositiveBoostArenaLimit.x, m_PositiveBoostArenaLimit.x);

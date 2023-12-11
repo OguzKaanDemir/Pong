@@ -13,6 +13,6 @@ public class BoostSpeed : Boost
     public override void DoAction(BallMovement ball)
     {
         base.DoAction(ball);
-        Player.SetSpeed(m_TargetSpeed, duration);
+        ball.GetLastPlayer().SetSpeed(m_TargetSpeed, duration);
     }
 }

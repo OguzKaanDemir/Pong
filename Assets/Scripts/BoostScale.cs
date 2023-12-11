@@ -13,6 +13,6 @@ public class BoostScale : Boost
     public override void DoAction(BallMovement ball)
     {
         base.DoAction(ball);
-        Player.SetScale(m_TargetScale, duration);
+        ball.GetLastPlayer().SetScale(m_TargetScale, duration);
     }
 }

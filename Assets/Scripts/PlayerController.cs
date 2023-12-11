@@ -56,11 +56,11 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator SpeedCoroutine(float newSpeed, float duration)
     {
-        DOTween.To(()=>m_StartScale, x => m_StartScale = x, newSpeed, .2f);
+        DOTween.To(()=>m_Speed, x => m_Speed = x, newSpeed, 1f);
 
         yield return new WaitForSeconds(duration);
 
-        DOTween.To(() => m_StartScale, x => m_StartScale = x, m_StartSpeed, .2f);
+        DOTween.To(() => m_Speed, x => m_Speed = x, m_StartSpeed, 1f);
     }
 
     public void SetScale(float newScale, float duration)
@@ -70,11 +70,11 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator ScaleCoroutine(float newScale, float duration)
     {
-        this.transform.DOScaleY(newScale, .2f);
+        this.transform.DOScaleY(newScale, 1f);
 
         yield return new WaitForSeconds(duration);
 
-        this.transform.DOScaleY(m_StartScale, .2f);
+        this.transform.DOScaleY(m_StartScale, 1f);
     }
 
     private void HandleMovement()
