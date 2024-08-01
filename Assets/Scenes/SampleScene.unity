@@ -718,7 +718,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9201f95ca5b80764a89a316d0dcf9eeb, type: 3}
-  m_Color: {r: 0.9960785, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.3019608, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -840,7 +840,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9201f95ca5b80764a89a316d0dcf9eeb, type: 3}
-  m_Color: {r: 0.9960785, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.3019608, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1406,7 +1406,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9201f95ca5b80764a89a316d0dcf9eeb, type: 3}
-  m_Color: {r: 0.9960785, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.3019608, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1499,7 +1499,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "BA\u015ELA"
+  m_text: Start
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2334,7 +2334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1153108913
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3104,8 +3104,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BoostPrefabs:
-  - {fileID: 1411273684180959235, guid: e13bbe38dd7d7d04599867f212974ff4, type: 3}
   - {fileID: 1797419984437874951, guid: e7358fe56848b8e42bce4db0f5302f02, type: 3}
+  - {fileID: 1411273684180959235, guid: e13bbe38dd7d7d04599867f212974ff4, type: 3}
   m_PositiveBoostArenaLimit: {x: 6, y: 3}
   m_SpawnDuration: 5
 --- !u!1001 &1717809658
@@ -3975,7 +3975,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5caeddf124a42de4daed320b9e1cff2d, type: 3}
-  m_Color: {r: 0.9960785, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.3019608, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -4836,7 +4836,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9201f95ca5b80764a89a316d0dcf9eeb, type: 3}
-  m_Color: {r: 0.9960785, g: 0, b: 1, a: 1}
+  m_Color: {r: 0.3019608, g: 1, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
